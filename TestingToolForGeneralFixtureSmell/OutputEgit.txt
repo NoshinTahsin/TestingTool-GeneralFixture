@@ -1,0 +1,1105 @@
+
+ProjectDir: C:\Users\noshi\Documents\egit-master
+***************************************
+
+File Path (BuildCompilationUnit) : C:\Users\noshi\Documents\egit-master\org.eclipse.egit.core.junit\src\org\eclipse\egit\core\test\DualRepositoryTestCase.java
+List of setup methods: 
+
+Setup method for Class: DualRepositoryTestCase.java 
+
+@Before
+public void beforeTestCase() throws Exception {
+    // ensure there are no shared Repository instances left
+    // when starting a new test
+    Activator.getDefault().getRepositoryCache().clear();
+}
+Examining setup method for : DualRepositoryTestCase.java
+
+Optional[{
+    // ensure there are no shared Repository instances left
+    // when starting a new test
+    Activator.getDefault().getRepositoryCache().clear();
+}]
+Number of test methods in the class : 2
+List of Test Methods for the class :
+
+@Before
+public void beforeTestCase() throws Exception {
+    // ensure there are no shared Repository instances left
+    // when starting a new test
+    Activator.getDefault().getRepositoryCache().clear();
+}
+List of Test Methods for the class :
+
+@After
+public void afterTestCase() throws Exception {
+    Activator.getDefault().getRepositoryCache().clear();
+    if (repository1 != null)
+        repository1.dispose();
+    if (repository2 != null)
+        repository2.dispose();
+    if (testProject != null) {
+        testProject.close(null);
+        testProject.delete(false, false, null);
+    }
+    testUtils.deleteTempDirs();
+}
+Testing Ended for Class DualRepositoryTestCase.java
+*******************************************************
+
+
+
+File Path (BuildCompilationUnit) : C:\Users\noshi\Documents\egit-master\org.eclipse.egit.core.junit\src\org\eclipse\egit\core\test\GitTestCase.java
+List of setup methods: 
+
+Setup method for Class: GitTestCase.java 
+
+@Before
+public void setUp() throws Exception {
+    // ensure there are no shared Repository instances left
+    // when starting a new test
+    Activator.getDefault().getRepositoryCache().clear();
+    File configFile = File.createTempFile("gitconfigtest", "config");
+    MockSystemReader mockSystemReader = new MockSystemReader() {
+
+        @Override
+        public FileBasedConfig openUserConfig(Config parent, FS fs) {
+            return new FileBasedConfig(parent, configFile, fs);
+        }
+    };
+    configFile.deleteOnExit();
+    SystemReader.setInstance(mockSystemReader);
+    mockSystemReader.setProperty(Constants.GIT_CEILING_DIRECTORIES_KEY, ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile().getParentFile().getAbsoluteFile().toString());
+    FileBasedConfig userConfig = mockSystemReader.openUserConfig(null, FS.DETECTED);
+    // We have to set autoDetach to false for tests, because tests expect to
+    // be able to clean up by recursively removing the repository, and
+    // background GC might be in the middle of writing or deleting files,
+    // which would disrupt this.
+    userConfig.setBoolean(ConfigConstants.CONFIG_GC_SECTION, null, ConfigConstants.CONFIG_KEY_AUTODETACH, false);
+    userConfig.save();
+    project = new TestProject(true);
+    gitDir = new File(project.getProject().getWorkspace().getRoot().getRawLocation().toFile(), Constants.DOT_GIT);
+    if (gitDir.exists())
+        FileUtils.delete(gitDir, FileUtils.RECURSIVE | FileUtils.RETRY);
+}
+Examining setup method for : GitTestCase.java
+
+Optional[{
+    // ensure there are no shared Repository instances left
+    // when starting a new test
+    Activator.getDefault().getRepositoryCache().clear();
+    File configFile = File.createTempFile("gitconfigtest", "config");
+    MockSystemReader mockSystemReader = new MockSystemReader() {
+
+        @Override
+        public FileBasedConfig openUserConfig(Config parent, FS fs) {
+            return new FileBasedConfig(parent, configFile, fs);
+        }
+    };
+    configFile.deleteOnExit();
+    SystemReader.setInstance(mockSystemReader);
+    mockSystemReader.setProperty(Constants.GIT_CEILING_DIRECTORIES_KEY, ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile().getParentFile().getAbsoluteFile().toString());
+    FileBasedConfig userConfig = mockSystemReader.openUserConfig(null, FS.DETECTED);
+    // We have to set autoDetach to false for tests, because tests expect to
+    // be able to clean up by recursively removing the repository, and
+    // background GC might be in the middle of writing or deleting files,
+    // which would disrupt this.
+    userConfig.setBoolean(ConfigConstants.CONFIG_GC_SECTION, null, ConfigConstants.CONFIG_KEY_AUTODETACH, false);
+    userConfig.save();
+    project = new TestProject(true);
+    gitDir = new File(project.getProject().getWorkspace().getRoot().getRawLocation().toFile(), Constants.DOT_GIT);
+    if (gitDir.exists())
+        FileUtils.delete(gitDir, FileUtils.RECURSIVE | FileUtils.RETRY);
+}]
+Included in setup fields' list : project
+Included in setup fields' list : gitDir
+Number of test methods in the class : 0
+Testing Ended for Class GitTestCase.java
+*******************************************************
+
+
+
+File Path (BuildCompilationUnit) : C:\Users\noshi\Documents\egit-master\org.eclipse.egit.core.junit\src\org\eclipse\egit\core\test\TestProject.java
+List of setup methods: 
+There is no setup method in this class
+Number of test methods in the class : 0
+Testing Ended for Class TestProject.java
+*******************************************************
+
+
+
+File Path (BuildCompilationUnit) : C:\Users\noshi\Documents\egit-master\org.eclipse.egit.core.junit\src\org\eclipse\egit\core\test\TestRepository.java
+List of setup methods: 
+There is no setup method in this class
+Number of test methods in the class : 0
+Testing Ended for Class TestRepository.java
+*******************************************************
+
+
+
+File Path (BuildCompilationUnit) : C:\Users\noshi\Documents\egit-master\org.eclipse.egit.core.junit\src\org\eclipse\egit\core\test\TestUtils.java
+List of setup methods: 
+There is no setup method in this class
+Number of test methods in the class : 0
+Testing Ended for Class TestUtils.java
+*******************************************************
+
+
+
+File Path (BuildCompilationUnit) : C:\Users\noshi\Documents\egit-master\org.eclipse.egit.core.test\src\org\eclipse\egit\core\GitMoveDeleteHookTest.java
+List of setup methods: 
+
+Setup method for Class: GitMoveDeleteHookTest.java 
+
+@Before
+public void setUp() throws Exception {
+    Activator.getDefault().getRepositoryCache().clear();
+    MockSystemReader mockSystemReader = new MockSystemReader();
+    SystemReader.setInstance(mockSystemReader);
+    mockSystemReader.setProperty(Constants.GIT_CEILING_DIRECTORIES_KEY, ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile().getParentFile().getAbsoluteFile().toString());
+    workspaceSupplement = testUtils.createTempDir("wssupplement");
+    testDirs.add(testUtils.getBaseTempDir());
+    workspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile().getAbsoluteFile();
+}
+Examining setup method for : GitMoveDeleteHookTest.java
+
+Optional[{
+    Activator.getDefault().getRepositoryCache().clear();
+    MockSystemReader mockSystemReader = new MockSystemReader();
+    SystemReader.setInstance(mockSystemReader);
+    mockSystemReader.setProperty(Constants.GIT_CEILING_DIRECTORIES_KEY, ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile().getParentFile().getAbsoluteFile().toString());
+    workspaceSupplement = testUtils.createTempDir("wssupplement");
+    testDirs.add(testUtils.getBaseTempDir());
+    workspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile().getAbsoluteFile();
+}]
+Included in setup fields' list : workspaceSupplement
+Included in setup fields' list : workspace
+Number of test methods in the class : 21
+List of Test Methods for the class :
+
+@Theory
+public void testDeleteFile(boolean autoStageDelete) throws Exception {
+    IEclipsePreferences p = InstanceScope.INSTANCE.getNode(Activator.getPluginId());
+    p.putBoolean(GitCorePreferences.core_autoStageDeletion, autoStageDelete);
+    TestProject project = initRepoInsideProjectInsideWorkspace();
+    testUtils.addFileToProject(project.getProject(), "file.txt", "some text");
+    testUtils.addFileToProject(project.getProject(), "file2.txt", "some  more text");
+    IFile file = project.getProject().getFile("file.txt");
+    AddToIndexOperation addToIndexOperation = new AddToIndexOperation(new IResource[] { file, project.getProject().getFile("file2.txt") });
+    addToIndexOperation.execute(null);
+    // Validate pre-conditions
+    DirCache dirCache = DirCache.read(repository.getIndexFile(), FS.DETECTED);
+    assertEquals(2, dirCache.getEntryCount());
+    assertNotNull(dirCache.getEntry("file.txt"));
+    assertNotNull(dirCache.getEntry("file2.txt"));
+    // Modify the content before the move
+    testUtils.changeContentOfFile(project.getProject(), file, "other text");
+    TestUtils.waitForJobs(500, 10000, JobFamilies.INDEX_DIFF_CACHE_UPDATE);
+    file.delete(true, null);
+    TestUtils.waitForJobs(500, 10000, JobFamilies.INDEX_DIFF_CACHE_UPDATE);
+    // Check index for the deleted file
+    dirCache.read();
+    if (autoStageDelete) {
+        assertEquals(1, dirCache.getEntryCount());
+        assertNull(dirCache.getEntry("file.txt"));
+    } else {
+        assertEquals(2, dirCache.getEntryCount());
+        assertNotNull(dirCache.getEntry("file.txt"));
+    }
+    assertNotNull(dirCache.getEntry("file2.txt"));
+    // Actual file is deleted
+    assertFalse(file.exists());
+    // But a non-affected file remains
+    assertTrue(project.getProject().getFile("file2.txt").exists());
+}
+List of Test Methods for the class :
+
+@Test
+public void testDeleteFolder() throws Exception {
+    TestProject project = initRepoInsideProjectInsideWorkspace();
+    testUtils.addFileToProject(project.getProject(), "folder/file.txt", "some text");
+    testUtils.addFileToProject(project.getProject(), "folder2/file.txt", "some other text");
+    AddToIndexOperation addToIndexOperation = new AddToIndexOperation(new IResource[] { project.getProject().getFile("folder/file.txt"), project.getProject().getFile("folder2/file.txt") });
+    addToIndexOperation.execute(null);
+    DirCache dirCache = DirCache.read(repository.getIndexFile(), FS.DETECTED);
+    assertNotNull(dirCache.getEntry("folder/file.txt"));
+    assertNotNull(dirCache.getEntry("folder2/file.txt"));
+    // Modify the content before the move
+    testUtils.changeContentOfFile(project.getProject(), project.getProject().getFile("folder/file.txt"), "other text");
+    project.getProject().getFolder("folder").delete(true, null);
+    dirCache.read();
+    // Unlike delete file, dircache is untouched... pretty illogical
+    // TODO: Change the behavior of the hook.
+    assertNotNull(dirCache.getEntry("folder/file.txt"));
+    // Not moved file still there
+    assertNotNull(dirCache.getEntry("folder2/file.txt"));
+}
+List of Test Methods for the class :
+
+@Test
+public void testDeleteProject() throws Exception {
+    TestProject project = initRepoAboveProjectInsideWs("P/", "");
+    testUtils.addFileToProject(project.getProject(), "file.txt", "some text");
+    AddToIndexOperation addToIndexOperation = new AddToIndexOperation(new IResource[] { project.getProject().getFile("file.txt") });
+    addToIndexOperation.execute(null);
+    RepositoryMapping mapping = RepositoryMapping.getMapping(project.getProject());
+    IPath gitDirAbsolutePath = mapping.getGitDirAbsolutePath();
+    Repository db = FileRepositoryBuilder.create(gitDirAbsolutePath.toFile());
+    DirCache index = DirCache.read(db.getIndexFile(), db.getFS());
+    assertNotNull(index.getEntry("P/Project-1/file.txt"));
+    db.close();
+    db = null;
+    project.getProject().delete(true, null);
+    assertNull(RepositoryMapping.getMapping(project.getProject()));
+    // Check that the repo is still there. Being a bit paranoid we look for
+    // a file
+    assertTrue(gitDirAbsolutePath.toString(), gitDirAbsolutePath.append("HEAD").toFile().exists());
+    db = FileRepositoryBuilder.create(gitDirAbsolutePath.toFile());
+    index = DirCache.read(db.getIndexFile(), db.getFS());
+    // FIXME: Shouldn't we unstage deleted projects?
+    assertNotNull(index.getEntry("P/Project-1/file.txt"));
+    db.close();
+}
+List of Test Methods for the class :
+
+@Theory
+public void testMoveFile(boolean autoStageMoves) throws Exception {
+    configureAutoStageMoves(autoStageMoves);
+    TestProject project = initRepoInsideProjectInsideWorkspace();
+    testUtils.addFileToProject(project.getProject(), "file.txt", "some text");
+    testUtils.addFileToProject(project.getProject(), "file2.txt", "some  more text");
+    AddToIndexOperation addToIndexOperation = new AddToIndexOperation(new IResource[] { project.getProject().getFile("file.txt"), project.getProject().getFile("file2.txt") });
+    addToIndexOperation.execute(null);
+    // Validate pre-conditions
+    DirCache dirCache = DirCache.read(repository.getIndexFile(), FS.DETECTED);
+    assertNotNull(dirCache.getEntry("file.txt"));
+    assertNotNull(dirCache.getEntry("file2.txt"));
+    assertNull(dirCache.getEntry("data.txt"));
+    assertFalse(project.getProject().getFile("data.txt").exists());
+    ObjectId oldContentId = dirCache.getEntry("file.txt").getObjectId();
+    // Modify the content before the move
+    testUtils.changeContentOfFile(project.getProject(), project.getProject().getFile("file.txt"), "other text");
+    project.getProject().getFile("file.txt").move(project.getProject().getFile("data.txt").getFullPath(), false, null);
+    dirCache.read();
+    assertTrue(project.getProject().getFile("data.txt").exists());
+    if (autoStageMoves) {
+        assertNotNull(dirCache.getEntry("data.txt"));
+        // Same content in index as before the move
+        assertEquals(oldContentId, dirCache.getEntry("data.txt").getObjectId());
+    } else {
+        assertNull(dirCache.getEntry("data.txt"));
+    }
+    // Not moved file still in its old place
+    assertNotNull(dirCache.getEntry("file2.txt"));
+}
+List of Test Methods for the class :
+
+/**
+	 * Rename "folder" to "dir".
+	 * @param autoStageMoves
+	 * @throws Exception
+	 */
+@Theory
+public void testMoveFolder(boolean autoStageMoves) throws Exception {
+    configureAutoStageMoves(autoStageMoves);
+    TestProject project = initRepoInsideProjectInsideWorkspace();
+    testUtils.addFileToProject(project.getProject(), "folder/file.txt", "some text");
+    testUtils.addFileToProject(project.getProject(), "folder2/file.txt", "some other text");
+    AddToIndexOperation addToIndexOperation = new AddToIndexOperation(new IResource[] { project.getProject().getFile("folder/file.txt"), project.getProject().getFile("folder2/file.txt") });
+    addToIndexOperation.execute(null);
+    DirCache dirCache = DirCache.read(repository.getIndexFile(), FS.DETECTED);
+    assertNotNull(dirCache.getEntry("folder/file.txt"));
+    assertNotNull(dirCache.getEntry("folder2/file.txt"));
+    assertNull(dirCache.getEntry("dir/file.txt"));
+    assertFalse(project.getProject().getFile("dir/file.txt").exists());
+    ObjectId oldContentId = dirCache.getEntry("folder/file.txt").getObjectId();
+    // Modify the content before the move
+    testUtils.changeContentOfFile(project.getProject(), project.getProject().getFile("folder/file.txt"), "other text");
+    project.getProject().getFolder("folder").move(project.getProject().getFolder("dir").getFullPath(), false, null);
+    dirCache.read();
+    assertTrue(project.getProject().getFile("dir/file.txt").exists());
+    if (autoStageMoves) {
+        assertNull(dirCache.getEntry("folder/file.txt"));
+        assertNotNull(dirCache.getEntry("dir/file.txt"));
+        // Same content in index as before the move
+        assertEquals(oldContentId, dirCache.getEntry("dir/file.txt").getObjectId());
+    } else {
+        assertNotNull(dirCache.getEntry("folder/file.txt"));
+        assertNull(dirCache.getEntry("dir/file.txt"));
+    }
+    // Not moved file still there
+    assertNotNull(dirCache.getEntry("folder2/file.txt"));
+}
+List of Test Methods for the class :
+
+/**
+	 * Rename and move a project in the workspace containing a Git repository.
+	 * <p>
+	 * The repository will be moved with the project.
+	 * Note that there is no way to rename a project in the workspace without
+	 * moving it. See https://bugs.eclipse.org/358828 for a discussion.
+	 *
+	 * @throws Exception
+	 */
+@Test
+public void testMoveAndRenameProjectContainingGitRepo() throws Exception {
+    ResourcesPlugin.getWorkspace().getRoot().getProject("Project-1").delete(true, null);
+    ResourcesPlugin.getWorkspace().getRoot().getProject("P2").delete(true, null);
+    TestProject project = initRepoInsideProjectInsideWorkspace();
+    testUtils.addFileToProject(project.getProject(), "file.txt", "some text");
+    AddToIndexOperation addToIndexOperation = new AddToIndexOperation(new IResource[] { project.getProject().getFile("file.txt") });
+    addToIndexOperation.execute(null);
+    IProjectDescription description = project.getProject().getDescription();
+    description.setName("P2");
+    registerWorkspaceRelativeTestDir("P2");
+    project.getProject().move(description, IResource.FORCE | IResource.SHALLOW, null);
+    IProject project2 = ResourcesPlugin.getWorkspace().getRoot().getProject("P2");
+    assertNotNull(RepositoryMapping.getMapping(project2.getProject()));
+    Repository movedRepo = RepositoryMapping.getMapping(project2).getRepository();
+    assertEquals("P2", movedRepo.getDirectory().getParentFile().getName());
+    DirCache dc = movedRepo.readDirCache();
+    assertEquals(1, dc.getEntryCount());
+    assertEquals("file.txt", dc.getEntry(0).getPathString());
+    assertFalse(ResourcesPlugin.getWorkspace().getRoot().getProject("Project-1").exists());
+}
+List of Test Methods for the class :
+
+/**
+	 * Rename a project outside the workspace containing a Git repository.
+	 * <p>
+	 * Note the similarity of the code with {@link #testMoveAndRenameProjectContainingGitRepo()}
+	 *
+	 * @throws Exception
+	 */
+@Test
+public void testRenameProjectOutsideWorkspaceContainingGitRepo() throws Exception {
+    ResourcesPlugin.getWorkspace().getRoot().getProject("Project-1").delete(true, null);
+    ResourcesPlugin.getWorkspace().getRoot().getProject("P2").delete(true, null);
+    TestProject project = initRepoInsideProjectOutsideWorkspace();
+    testUtils.addFileToProject(project.getProject(), "file.txt", "some text");
+    AddToIndexOperation addToIndexOperation = new AddToIndexOperation(new IResource[] { project.getProject().getFile("file.txt") });
+    addToIndexOperation.execute(null);
+    IProjectDescription description = project.getProject().getDescription();
+    description.setName("P2");
+    project.getProject().move(description, IResource.FORCE | IResource.SHALLOW, null);
+    IProject project2 = ResourcesPlugin.getWorkspace().getRoot().getProject("P2");
+    assertNotNull(RepositoryMapping.getMapping(project2.getProject()));
+    Repository movedRepo = RepositoryMapping.getMapping(project2).getRepository();
+    assertEquals("Project-1", movedRepo.getDirectory().getParentFile().getName());
+    DirCache dc = movedRepo.readDirCache();
+    assertEquals(1, dc.getEntryCount());
+    assertEquals("file.txt", dc.getEntry(0).getPathString());
+    assertFalse(ResourcesPlugin.getWorkspace().getRoot().getProject("Project-1").exists());
+}
+List of Test Methods for the class :
+
+/**
+	 * Move a project outside the workspace containing a Git repository, but do not rename it.
+	 * <p>
+	 * Note the similarity of the code with {@link #testMoveAndRenameProjectContainingGitRepo()}
+	 *
+	 * @throws Exception
+	 */
+@Test
+public void testMoveButDoNotRenameProjectOutsideWorkspaceContainingGitRepo() throws Exception {
+    ResourcesPlugin.getWorkspace().getRoot().getProject("Project-1").delete(true, null);
+    ResourcesPlugin.getWorkspace().getRoot().getProject("P2").delete(true, null);
+    TestProject project = initRepoInsideProjectOutsideWorkspace();
+    testUtils.addFileToProject(project.getProject(), "file.txt", "some text");
+    AddToIndexOperation addToIndexOperation = new AddToIndexOperation(new IResource[] { project.getProject().getFile("file.txt") });
+    addToIndexOperation.execute(null);
+    IProjectDescription description = project.getProject().getDescription();
+    description.setLocationURI(URIUtil.toURI(new Path(new File(project.getWorkspaceSupplement(), "P2").getAbsolutePath())));
+    project.getProject().move(description, IResource.FORCE | IResource.SHALLOW, null);
+    IProject project2 = ResourcesPlugin.getWorkspace().getRoot().getProject(// same name
+    "Project-1");
+    assertNotNull(RepositoryMapping.getMapping(project2.getProject()));
+    Repository movedRepo = RepositoryMapping.getMapping(project2).getRepository();
+    assertEquals("P2", movedRepo.getDirectory().getParentFile().getName());
+    DirCache dc = movedRepo.readDirCache();
+    assertEquals(1, dc.getEntryCount());
+    assertEquals("file.txt", dc.getEntry(0).getPathString());
+    assertFalse(ResourcesPlugin.getWorkspace().getRoot().getProject("P2").exists());
+}
+List of Test Methods for the class :
+
+@Theory
+public void testMoveProjectWithinGitRepoMoveAtSameTopLevel(boolean autoStageMoves) throws Exception {
+    dotestMoveProjectWithinRepoWithinWorkspace("", "Project-1", "", "P2", "", autoStageMoves);
+}
+List of Test Methods for the class :
+
+@Theory
+public void testMoveProjectWithinGitRepoMoveFromTopOneLevelDown(boolean autoStageMoves) throws Exception {
+    dotestMoveProjectWithinRepoWithinWorkspace("", "Project-1", "X/", "P2", "", autoStageMoves);
+}
+List of Test Methods for the class :
+
+@Theory
+public void testMoveProjectWithinGitRepoMoveFromOneLevelDownToTop(boolean autoStageMoves) throws Exception {
+    dotestMoveProjectWithinRepoWithinWorkspace("P/", "Project-1", "", "P2", "", autoStageMoves);
+}
+List of Test Methods for the class :
+
+@Theory
+public void testMoveProjectWithinGitRepoMoveFromOneLevelDownToSameDepth(boolean autoStageMoves) throws Exception {
+    dotestMoveProjectWithinRepoWithinWorkspace("P/", "Project-1", "X/", "P2", "", autoStageMoves);
+}
+List of Test Methods for the class :
+
+@Theory
+public void testMoveProjectWithinGitRepoMoveFromOneLevelDownOutsideTheRepo(boolean autoStageMoves) throws Exception {
+    dotestMoveProjectWithinRepoWithinWorkspace("P/", "Project-1", "P/", "P2", "P/", autoStageMoves);
+}
+List of Test Methods for the class :
+
+@Theory
+public void testMoveProjectWithinGitOutsideWorkspaceRepoMoveAtSameTopLevel(boolean autoStageMoves) throws Exception {
+    dotestMoveProjectWithinRepoOutsideWorkspace("", "Project-1", "", "P2", "", autoStageMoves);
+}
+List of Test Methods for the class :
+
+@Theory
+public void testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromTopOneLevelDown(boolean autoStageMoves) throws Exception {
+    dotestMoveProjectWithinRepoOutsideWorkspace("", "Project-1", "X/", "P2", "", autoStageMoves);
+}
+List of Test Methods for the class :
+
+@Theory
+public void testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromOneLevelDownToTop(boolean autoStageMoves) throws Exception {
+    dotestMoveProjectWithinRepoOutsideWorkspace("P/", "Project-1", "", "P2", "", autoStageMoves);
+}
+List of Test Methods for the class :
+
+@Theory
+public void testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromOneLevelDownToSameDepth(boolean autoStageMoves) throws Exception {
+    dotestMoveProjectWithinRepoOutsideWorkspace("P/", "Project-1", "X/", "P2", "", autoStageMoves);
+}
+List of Test Methods for the class :
+
+@Theory
+public void testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromOneLevelDownOutsideTheRepo(boolean autoStageMoves) throws Exception {
+    dotestMoveProjectWithinRepoOutsideWorkspace("P/", "Project-1", "P/", "P2", "P/", autoStageMoves);
+}
+List of Test Methods for the class :
+
+@Theory
+public void testMoveProjectWithinGitRepoMoveFromLevelZeroDownOne(boolean autoStageMoves) throws Exception {
+    // TODO: See Bug 307140)
+    try {
+        dotestMoveProjectWithinRepoWithinWorkspace("P/", "Project-1", "P/Project-1/", "P2", "P/Project-1/", autoStageMoves);
+        if (!"true".equals(System.getProperty("egit.assume_307140_fixed")))
+            fail("ResourceException expected, core functionality dangerously broken and therefore forbidden");
+    } catch (CoreException e) {
+        if ("true".equals(System.getProperty("egit.assume_307140_fixed")))
+            throw e;
+    }
+}
+List of Test Methods for the class :
+
+@Theory
+public void testMoveFileWithConflictsShouldBeCanceled(boolean autoStageMoves) throws Exception {
+    configureAutoStageMoves(autoStageMoves);
+    TestProject project = initRepoInsideProjectInsideWorkspace();
+    String filePath = "file.txt";
+    IFile file = testUtils.addFileToProject(project.getProject(), filePath, "some text");
+    Repository repo = testRepository.getRepository();
+    DirCache index = repo.lockDirCache();
+    DirCacheBuilder builder = index.builder();
+    addUnmergedEntry(filePath, builder);
+    builder.commit();
+    try {
+        file.move(new Path("destination.txt"), false, null);
+        fail("Expected move of file with conflicts to fail.");
+    } catch (CoreException e) {
+        IStatus status = e.getStatus();
+        assertNotNull(status);
+        assertEquals(IStatus.WARNING, status.getSeverity());
+    }
+    assertTrue("File should still exist at old location", file.exists());
+    DirCache indexAfter = repo.readDirCache();
+    DirCacheEntry entry = indexAfter.getEntry(filePath);
+    assertEquals("Expected entry to still be in non-zero (conflict) stage", DirCacheEntry.STAGE_1, entry.getStage());
+}
+List of Test Methods for the class :
+
+@Theory
+public void testMoveFolderWithFileWithConflictsShouldBeCanceled(boolean autoStageMoves) throws Exception {
+    configureAutoStageMoves(autoStageMoves);
+    TestProject project = initRepoInsideProjectInsideWorkspace();
+    String filePath = "folder/file.txt";
+    IFile file = testUtils.addFileToProject(project.getProject(), filePath, "some text");
+    Repository repo = testRepository.getRepository();
+    DirCache index = repo.lockDirCache();
+    DirCacheBuilder builder = index.builder();
+    addUnmergedEntry(filePath, builder);
+    builder.commit();
+    try {
+        project.getProject().getFolder("folder").move(project.getProject().getFolder("newfolder").getFullPath(), false, null);
+        fail("Expected move of folder with file with conflicts to fail.");
+    } catch (CoreException e) {
+        IStatus status = e.getStatus();
+        assertNotNull(status);
+        assertEquals(IStatus.WARNING, status.getSeverity());
+    }
+    assertTrue("File should still exist at old location", file.exists());
+    DirCache indexAfter = repo.readDirCache();
+    DirCacheEntry entry = indexAfter.getEntry(filePath);
+    assertEquals("Expected entry to still be in non-zero (conflict) stage", DirCacheEntry.STAGE_1, entry.getStage());
+}
+
+
+Result String :
+
+Method testDeleteFile() has smell for variable: workspaceSupplement from line no 153 to 199
+Method Containing Smell: testDeleteFile()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 153
+End Point of Smell: Line number 199
+
+
+
+
+
+
+Result String :
+
+Method testDeleteFile() has smell for variable: workspace from line no 153 to 199
+Method Containing Smell: testDeleteFile()
+Variable causing smell: workspace
+Start Point of Smell: Line number 153
+End Point of Smell: Line number 199
+
+
+
+
+
+
+Result String :
+
+Method testDeleteFolder() has smell for variable: workspaceSupplement from line no 201 to 229
+Method Containing Smell: testDeleteFolder()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 201
+End Point of Smell: Line number 229
+
+
+
+
+
+
+Result String :
+
+Method testDeleteFolder() has smell for variable: workspace from line no 201 to 229
+Method Containing Smell: testDeleteFolder()
+Variable causing smell: workspace
+Start Point of Smell: Line number 201
+End Point of Smell: Line number 229
+
+
+
+
+
+
+Result String :
+
+Method testDeleteProject() has smell for variable: workspaceSupplement from line no 231 to 261
+Method Containing Smell: testDeleteProject()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 231
+End Point of Smell: Line number 261
+
+
+
+
+
+
+Result String :
+
+Method testDeleteProject() has smell for variable: workspace from line no 231 to 261
+Method Containing Smell: testDeleteProject()
+Variable causing smell: workspace
+Start Point of Smell: Line number 231
+End Point of Smell: Line number 261
+
+
+
+
+
+
+Result String :
+
+Method testMoveFile() has smell for variable: workspaceSupplement from line no 269 to 312
+Method Containing Smell: testMoveFile()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 269
+End Point of Smell: Line number 312
+
+
+
+
+
+
+Result String :
+
+Method testMoveFile() has smell for variable: workspace from line no 269 to 312
+Method Containing Smell: testMoveFile()
+Variable causing smell: workspace
+Start Point of Smell: Line number 269
+End Point of Smell: Line number 312
+
+
+
+
+
+
+Result String :
+
+Method testMoveFolder() has smell for variable: workspaceSupplement from line no 319 to 364
+Method Containing Smell: testMoveFolder()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 319
+End Point of Smell: Line number 364
+
+
+
+
+
+
+Result String :
+
+Method testMoveFolder() has smell for variable: workspace from line no 319 to 364
+Method Containing Smell: testMoveFolder()
+Variable causing smell: workspace
+Start Point of Smell: Line number 319
+End Point of Smell: Line number 364
+
+
+
+
+
+
+Result String :
+
+Method testMoveAndRenameProjectContainingGitRepo() has smell for variable: workspaceSupplement from line no 375 to 404
+Method Containing Smell: testMoveAndRenameProjectContainingGitRepo()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 375
+End Point of Smell: Line number 404
+
+
+
+
+
+
+Result String :
+
+Method testMoveAndRenameProjectContainingGitRepo() has smell for variable: workspace from line no 375 to 404
+Method Containing Smell: testMoveAndRenameProjectContainingGitRepo()
+Variable causing smell: workspace
+Start Point of Smell: Line number 375
+End Point of Smell: Line number 404
+
+
+
+
+
+
+Result String :
+
+Method testRenameProjectOutsideWorkspaceContainingGitRepo() has smell for variable: workspaceSupplement from line no 413 to 440
+Method Containing Smell: testRenameProjectOutsideWorkspaceContainingGitRepo()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 413
+End Point of Smell: Line number 440
+
+
+
+
+
+
+Result String :
+
+Method testRenameProjectOutsideWorkspaceContainingGitRepo() has smell for variable: workspace from line no 413 to 440
+Method Containing Smell: testRenameProjectOutsideWorkspaceContainingGitRepo()
+Variable causing smell: workspace
+Start Point of Smell: Line number 413
+End Point of Smell: Line number 440
+
+
+
+
+
+
+Result String :
+
+Method testMoveButDoNotRenameProjectOutsideWorkspaceContainingGitRepo() has smell for variable: workspaceSupplement from line no 449 to 476
+Method Containing Smell: testMoveButDoNotRenameProjectOutsideWorkspaceContainingGitRepo()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 449
+End Point of Smell: Line number 476
+
+
+
+
+
+
+Result String :
+
+Method testMoveButDoNotRenameProjectOutsideWorkspaceContainingGitRepo() has smell for variable: workspace from line no 449 to 476
+Method Containing Smell: testMoveButDoNotRenameProjectOutsideWorkspaceContainingGitRepo()
+Variable causing smell: workspace
+Start Point of Smell: Line number 449
+End Point of Smell: Line number 476
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitRepoMoveAtSameTopLevel() has smell for variable: workspaceSupplement from line no 479 to 485
+Method Containing Smell: testMoveProjectWithinGitRepoMoveAtSameTopLevel()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 479
+End Point of Smell: Line number 485
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitRepoMoveAtSameTopLevel() has smell for variable: workspace from line no 479 to 485
+Method Containing Smell: testMoveProjectWithinGitRepoMoveAtSameTopLevel()
+Variable causing smell: workspace
+Start Point of Smell: Line number 479
+End Point of Smell: Line number 485
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitRepoMoveFromTopOneLevelDown() has smell for variable: workspaceSupplement from line no 487 to 493
+Method Containing Smell: testMoveProjectWithinGitRepoMoveFromTopOneLevelDown()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 487
+End Point of Smell: Line number 493
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitRepoMoveFromTopOneLevelDown() has smell for variable: workspace from line no 487 to 493
+Method Containing Smell: testMoveProjectWithinGitRepoMoveFromTopOneLevelDown()
+Variable causing smell: workspace
+Start Point of Smell: Line number 487
+End Point of Smell: Line number 493
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitRepoMoveFromOneLevelDownToTop() has smell for variable: workspaceSupplement from line no 495 to 501
+Method Containing Smell: testMoveProjectWithinGitRepoMoveFromOneLevelDownToTop()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 495
+End Point of Smell: Line number 501
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitRepoMoveFromOneLevelDownToTop() has smell for variable: workspace from line no 495 to 501
+Method Containing Smell: testMoveProjectWithinGitRepoMoveFromOneLevelDownToTop()
+Variable causing smell: workspace
+Start Point of Smell: Line number 495
+End Point of Smell: Line number 501
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitRepoMoveFromOneLevelDownToSameDepth() has smell for variable: workspaceSupplement from line no 503 to 509
+Method Containing Smell: testMoveProjectWithinGitRepoMoveFromOneLevelDownToSameDepth()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 503
+End Point of Smell: Line number 509
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitRepoMoveFromOneLevelDownToSameDepth() has smell for variable: workspace from line no 503 to 509
+Method Containing Smell: testMoveProjectWithinGitRepoMoveFromOneLevelDownToSameDepth()
+Variable causing smell: workspace
+Start Point of Smell: Line number 503
+End Point of Smell: Line number 509
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitRepoMoveFromOneLevelDownOutsideTheRepo() has smell for variable: workspaceSupplement from line no 511 to 516
+Method Containing Smell: testMoveProjectWithinGitRepoMoveFromOneLevelDownOutsideTheRepo()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 511
+End Point of Smell: Line number 516
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitRepoMoveFromOneLevelDownOutsideTheRepo() has smell for variable: workspace from line no 511 to 516
+Method Containing Smell: testMoveProjectWithinGitRepoMoveFromOneLevelDownOutsideTheRepo()
+Variable causing smell: workspace
+Start Point of Smell: Line number 511
+End Point of Smell: Line number 516
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitOutsideWorkspaceRepoMoveAtSameTopLevel() has smell for variable: workspaceSupplement from line no 518 to 524
+Method Containing Smell: testMoveProjectWithinGitOutsideWorkspaceRepoMoveAtSameTopLevel()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 518
+End Point of Smell: Line number 524
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitOutsideWorkspaceRepoMoveAtSameTopLevel() has smell for variable: workspace from line no 518 to 524
+Method Containing Smell: testMoveProjectWithinGitOutsideWorkspaceRepoMoveAtSameTopLevel()
+Variable causing smell: workspace
+Start Point of Smell: Line number 518
+End Point of Smell: Line number 524
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromTopOneLevelDown() has smell for variable: workspaceSupplement from line no 526 to 532
+Method Containing Smell: testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromTopOneLevelDown()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 526
+End Point of Smell: Line number 532
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromTopOneLevelDown() has smell for variable: workspace from line no 526 to 532
+Method Containing Smell: testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromTopOneLevelDown()
+Variable causing smell: workspace
+Start Point of Smell: Line number 526
+End Point of Smell: Line number 532
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromOneLevelDownToTop() has smell for variable: workspaceSupplement from line no 534 to 540
+Method Containing Smell: testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromOneLevelDownToTop()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 534
+End Point of Smell: Line number 540
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromOneLevelDownToTop() has smell for variable: workspace from line no 534 to 540
+Method Containing Smell: testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromOneLevelDownToTop()
+Variable causing smell: workspace
+Start Point of Smell: Line number 534
+End Point of Smell: Line number 540
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromOneLevelDownToSameDepth() has smell for variable: workspaceSupplement from line no 542 to 548
+Method Containing Smell: testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromOneLevelDownToSameDepth()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 542
+End Point of Smell: Line number 548
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromOneLevelDownToSameDepth() has smell for variable: workspace from line no 542 to 548
+Method Containing Smell: testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromOneLevelDownToSameDepth()
+Variable causing smell: workspace
+Start Point of Smell: Line number 542
+End Point of Smell: Line number 548
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromOneLevelDownOutsideTheRepo() has smell for variable: workspaceSupplement from line no 550 to 556
+Method Containing Smell: testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromOneLevelDownOutsideTheRepo()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 550
+End Point of Smell: Line number 556
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromOneLevelDownOutsideTheRepo() has smell for variable: workspace from line no 550 to 556
+Method Containing Smell: testMoveProjectWithinGitOutsideWorkspaceRepoMoveFromOneLevelDownOutsideTheRepo()
+Variable causing smell: workspace
+Start Point of Smell: Line number 550
+End Point of Smell: Line number 556
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitRepoMoveFromLevelZeroDownOne() has smell for variable: workspaceSupplement from line no 559 to 575
+Method Containing Smell: testMoveProjectWithinGitRepoMoveFromLevelZeroDownOne()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 559
+End Point of Smell: Line number 575
+
+
+
+
+
+
+Result String :
+
+Method testMoveProjectWithinGitRepoMoveFromLevelZeroDownOne() has smell for variable: workspace from line no 559 to 575
+Method Containing Smell: testMoveProjectWithinGitRepoMoveFromLevelZeroDownOne()
+Variable causing smell: workspace
+Start Point of Smell: Line number 559
+End Point of Smell: Line number 575
+
+
+
+
+
+
+Result String :
+
+Method testMoveFileWithConflictsShouldBeCanceled() has smell for variable: workspaceSupplement from line no 577 to 606
+Method Containing Smell: testMoveFileWithConflictsShouldBeCanceled()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 577
+End Point of Smell: Line number 606
+
+
+
+
+
+
+Result String :
+
+Method testMoveFileWithConflictsShouldBeCanceled() has smell for variable: workspace from line no 577 to 606
+Method Containing Smell: testMoveFileWithConflictsShouldBeCanceled()
+Variable causing smell: workspace
+Start Point of Smell: Line number 577
+End Point of Smell: Line number 606
+
+
+
+
+
+
+Result String :
+
+Method testMoveFolderWithFileWithConflictsShouldBeCanceled() has smell for variable: workspaceSupplement from line no 608 to 640
+Method Containing Smell: testMoveFolderWithFileWithConflictsShouldBeCanceled()
+Variable causing smell: workspaceSupplement
+Start Point of Smell: Line number 608
+End Point of Smell: Line number 640
+
+
+
+
+
+
+Result String :
+
+Method testMoveFolderWithFileWithConflictsShouldBeCanceled() has smell for variable: workspace from line no 608 to 640
+Method Containing Smell: testMoveFolderWithFileWithConflictsShouldBeCanceled()
+Variable causing smell: workspace
+Start Point of Smell: Line number 608
+End Point of Smell: Line number 640
+
+
+
+
+Testing Ended for Class GitMoveDeleteHookTest.java
+*******************************************************
+
+
+
+File Path (BuildCompilationUnit) : C:\Users\noshi\Documents\egit-master\org.eclipse.egit.core.test\src\org\eclipse\egit\core\internal\indexdiff\IndexDiffCacheEntryTest.java
+Parent of the class: IndexDiffCacheEntry2.java : IndexDiffCacheEntry.java
+
+***Can't find the file: C:\Users\noshi\Documents\egit-master\IndexDiffCacheEntry.java***
+
