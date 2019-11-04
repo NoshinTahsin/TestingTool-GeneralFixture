@@ -1,0 +1,390 @@
+
+ProjectDir: C:\Users\noshi\Documents\EquationSolverTest-master\EquationSolverTest\src
+***************************************
+
+File Path (BuildCompilationUnit) : C:\Users\noshi\Documents\EquationSolverTest-master\EquationSolverTest\src\ExpressionFormatterTest.java
+Parent of the class: ExpressionFormatterTest.java : TestCase.java
+List of setup methods: 
+
+Setup method for Class: ExpressionFormatterTest.java 
+
+@Override
+protected void setUp() throws Exception {
+    // TODO Auto-generated method stub
+    super.setUp();
+    setExpression();
+    setExpressionFormatter();
+    main = new Main();
+}
+
+Setup method for Class: TestCase.java 
+
+@Override
+protected void setUp() throws Exception {
+    // TODO Auto-generated method stub
+    int a;
+    int b;
+}
+Examining setup method for : ExpressionFormatterTest.java
+
+Optional[{
+    // TODO Auto-generated method stub
+    super.setUp();
+    setExpression();
+    setExpressionFormatter();
+    main = new Main();
+}]
+Included in setup fields' list : main
+Examining setup method for : TestCase.java
+
+Optional[{
+    // TODO Auto-generated method stub
+    int a;
+    int b;
+}]
+Number of test methods in the class : 3
+List of Test Methods for the class :
+
+@Test
+public void testGetRightExp() {
+    assertEquals("2+2", expressionFormatter.getRightExp());
+}
+List of Test Methods for the class :
+
+@Test
+public void testModifyString() {
+    assertEquals("2+2", expressionFormatter.modifyString());
+}
+List of Test Methods for the class :
+
+@Test
+public void testRemove() {
+    assertEquals("2", expressionFormatter.remove(0, 1));
+}
+
+
+Result String :
+
+Method testGetRightExp() has smell for variable: main from line no 42 to 46
+Method Containing Smell: testGetRightExp()
+Variable causing smell: main
+Start Point of Smell: Line number 42
+End Point of Smell: Line number 46
+
+
+
+
+
+
+Result String :
+
+Method testModifyString() has smell for variable: main from line no 48 to 52
+Method Containing Smell: testModifyString()
+Variable causing smell: main
+Start Point of Smell: Line number 48
+End Point of Smell: Line number 52
+
+
+
+
+
+
+Result String :
+
+Method testRemove() has smell for variable: main from line no 54 to 58
+Method Containing Smell: testRemove()
+Variable causing smell: main
+Start Point of Smell: Line number 54
+End Point of Smell: Line number 58
+
+
+
+
+Testing Ended for Class ExpressionFormatterTest.java
+*******************************************************
+
+
+
+File Path (BuildCompilationUnit) : C:\Users\noshi\Documents\EquationSolverTest-master\EquationSolverTest\src\ExpressionSimulationResultTest.java
+Parent of the class: ExpressionSimulationResultTest.java : TestCase.java
+List of setup methods: 
+
+Setup method for Class: ExpressionSimulationResultTest.java 
+
+@Override
+protected void setUp() throws Exception {
+    // TODO Auto-generated method stub
+    super.setUp();
+    simulateEquation = new SimulateEquation();
+    simulateEquation.exp = "2+2";
+    setExpressions();
+}
+
+Setup method for Class: TestCase.java 
+
+@Override
+protected void setUp() throws Exception {
+    // TODO Auto-generated method stub
+    int a;
+    int b;
+}
+Examining setup method for : ExpressionSimulationResultTest.java
+
+Optional[{
+    // TODO Auto-generated method stub
+    super.setUp();
+    simulateEquation = new SimulateEquation();
+    simulateEquation.exp = "2+2";
+    setExpressions();
+}]
+Included in setup fields' list : simulateEquation
+Included in setup fields' list : simulateEquation.exp
+Examining setup method for : TestCase.java
+
+Optional[{
+    // TODO Auto-generated method stub
+    int a;
+    int b;
+}]
+Number of test methods in the class : 4
+List of Test Methods for the class :
+
+@Test
+public void testNoBracketExpression() {
+    simulateEquation.exp = noBracketExpression;
+    assertEquals(simulateEquation.expressionSimulation(), 20);
+}
+List of Test Methods for the class :
+
+@Test
+public void testBracketExpression() {
+    simulateEquation.exp = bracketExpression;
+    assertEquals(simulateEquation.expressionSimulation(), 20);
+}
+List of Test Methods for the class :
+
+@Test
+public void testParameterExpression() {
+    simulateEquation.exp = parameterExpression;
+    assertEquals(simulateEquation.expressionSimulation(), 20);
+}
+List of Test Methods for the class :
+
+@Test
+public void testMultiBracketExpression() {
+    simulateEquation.exp = multiBracketExpression;
+    assertEquals(simulateEquation.expressionSimulation(), 20);
+}
+
+
+Result String :
+
+Method testNoBracketExpression() has smell for variable: simulateEquation.exp from line no 39 to 44
+Method Containing Smell: testNoBracketExpression()
+Variable causing smell: simulateEquation.exp
+Start Point of Smell: Line number 39
+End Point of Smell: Line number 44
+
+
+
+
+
+
+Result String :
+
+Method testBracketExpression() has smell for variable: simulateEquation.exp from line no 46 to 51
+Method Containing Smell: testBracketExpression()
+Variable causing smell: simulateEquation.exp
+Start Point of Smell: Line number 46
+End Point of Smell: Line number 51
+
+
+
+
+
+
+Result String :
+
+Method testParameterExpression() has smell for variable: simulateEquation.exp from line no 53 to 58
+Method Containing Smell: testParameterExpression()
+Variable causing smell: simulateEquation.exp
+Start Point of Smell: Line number 53
+End Point of Smell: Line number 58
+
+
+
+
+
+
+Result String :
+
+Method testMultiBracketExpression() has smell for variable: simulateEquation.exp from line no 60 to 66
+Method Containing Smell: testMultiBracketExpression()
+Variable causing smell: simulateEquation.exp
+Start Point of Smell: Line number 60
+End Point of Smell: Line number 66
+
+
+
+
+Testing Ended for Class ExpressionSimulationResultTest.java
+*******************************************************
+
+
+
+File Path (BuildCompilationUnit) : C:\Users\noshi\Documents\EquationSolverTest-master\EquationSolverTest\src\OperationTest.java
+Parent of the class: OperationTest.java : TestCase.java
+List of setup methods: 
+
+Setup method for Class: OperationTest.java 
+
+@Override
+protected void setUp() throws Exception {
+    // TODO Auto-generated method stub
+    super.setUp();
+    simulateEquation = new SimulateEquation();
+}
+
+Setup method for Class: TestCase.java 
+
+@Override
+protected void setUp() throws Exception {
+    // TODO Auto-generated method stub
+    int a;
+    int b;
+}
+Examining setup method for : OperationTest.java
+
+Optional[{
+    // TODO Auto-generated method stub
+    super.setUp();
+    simulateEquation = new SimulateEquation();
+}]
+Included in setup fields' list : simulateEquation
+Examining setup method for : TestCase.java
+
+Optional[{
+    // TODO Auto-generated method stub
+    int a;
+    int b;
+}]
+Number of test methods in the class : 4
+List of Test Methods for the class :
+
+@Test
+public void testAddOperation() {
+    assertEquals(simulateEquation.opration(10, 10, "+"), 20);
+}
+List of Test Methods for the class :
+
+@Test
+public void testSubtractOperation() {
+    assertEquals(simulateEquation.opration(20, 20, "-"), 0);
+}
+List of Test Methods for the class :
+
+@Test
+public void testDivisionOperation() {
+    assertEquals(simulateEquation.opration(100, 100, "/"), 1);
+}
+List of Test Methods for the class :
+
+@Test
+public void testMultiplicationOperation() {
+    assertEquals(simulateEquation.opration(5, 5, "*"), 25);
+}
+Testing Ended for Class OperationTest.java
+*******************************************************
+
+
+
+File Path (BuildCompilationUnit) : C:\Users\noshi\Documents\EquationSolverTest-master\EquationSolverTest\src\SimulateEquationTest.java
+Parent of the class: SimulateEquationTest.java : TestCase.java
+List of setup methods: 
+
+Setup method for Class: SimulateEquationTest.java 
+
+@Override
+protected void setUp() throws Exception {
+    // TODO Auto-generated method stub
+    super.setUp();
+    initializeSimulateEquation();
+    setOperators();
+}
+
+Setup method for Class: TestCase.java 
+
+@Override
+protected void setUp() throws Exception {
+    // TODO Auto-generated method stub
+    int a;
+    int b;
+}
+Examining setup method for : SimulateEquationTest.java
+
+Optional[{
+    // TODO Auto-generated method stub
+    super.setUp();
+    initializeSimulateEquation();
+    setOperators();
+}]
+Examining setup method for : TestCase.java
+
+Optional[{
+    // TODO Auto-generated method stub
+    int a;
+    int b;
+}]
+Number of test methods in the class : 4
+List of Test Methods for the class :
+
+@Test
+public void testIsOperatorForAdd() {
+    assertEquals(simulateEquation.isOperator("+"), true);
+}
+List of Test Methods for the class :
+
+@Test
+public void testIsOperatorForDivide() {
+    assertEquals(simulateEquation.isOperator("/"), true);
+}
+List of Test Methods for the class :
+
+@Test
+public void testIsOperatorForMultiplication() {
+    assertEquals(simulateEquation.isOperator("*"), true);
+}
+List of Test Methods for the class :
+
+@Test
+public void testIsOperatorForSubtract() {
+    assertEquals(simulateEquation.isOperator("-"), true);
+}
+Testing Ended for Class SimulateEquationTest.java
+*******************************************************
+
+
+
+File Path (BuildCompilationUnit) : C:\Users\noshi\Documents\EquationSolverTest-master\EquationSolverTest\src\TestCase.java
+List of setup methods: 
+
+Setup method for Class: TestCase.java 
+
+@Override
+protected void setUp() throws Exception {
+    // TODO Auto-generated method stub
+    int a;
+    int b;
+}
+Examining setup method for : TestCase.java
+
+Optional[{
+    // TODO Auto-generated method stub
+    int a;
+    int b;
+}]
+Number of test methods in the class : 0
+Testing Ended for Class TestCase.java
+*******************************************************
+
+
